@@ -593,9 +593,11 @@ var BaseProvider = /** @class */ (function (_super) {
             var _this = this;
             setTimeout(function () {
                 if (value && !_this._poller) {
+                  console.log("Setting interval");
                     _this._poller = setInterval(_this._doPoll.bind(_this), _this.pollingInterval);
                 }
                 else if (!value && _this._poller) {
+                  console.log("clearting interval");
                     clearInterval(_this._poller);
                     _this._poller = null;
                 }
@@ -615,6 +617,7 @@ var BaseProvider = /** @class */ (function (_super) {
             }
             this._pollingInterval = value;
             if (this._poller) {
+              conosle.log("interval timeout change");
                 clearInterval(this._poller);
                 this._poller = setInterval(function () { _this._doPoll(); }, this._pollingInterval);
             }
